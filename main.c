@@ -391,7 +391,9 @@ int Base64DeAndRsa(const unsigned char *Base64, unsigned char *OutBuf)
 	DEBUG_INFO( "The Base64 decrypted OutBuf is: '%s'\n\n", DataOut2);
 	
 	//ret = RsaDecrypt(DataOut2, OutBuf);
+	DEBUG_INFO("===1===");
 	ret = MyRsaDecrypt(DataOut2, OutBuf);
+	DEBUG_INFO("===2===");
 	
 	return ret;
 }
@@ -446,10 +448,13 @@ void TestRsa(void)
   //unsigned char buf[1024] = "eA+5VlIpqDPSYWXWE1KCcMmHawwhbDTT8OAMbZunsfJzUE40DubcJzqyCAMgaA7XtE8eSPn0y9Fn2Ib4miUz5hjO5UILtlvbjGOq09bzDOTGUR6O9EDegNoej8bbmqSfLPvxjB6EHOJlzc6yVQoocZDAur0KNViQbAUwQKLYKJY=";
 
   unsigned char OutBuf_test[2048] = {0};
+  /*
   MyRsaDecrypt(buf, OutBuf_test);
   DEBUG_INFO("OutBuf_test: %s\n",OutBuf_test);
   printf("OutBuf_test: %s\n",OutBuf_test);
-  
+  */
+
+
   unsigned char OutBuf[2048] = {0};
   //base64解码，rsa私钥解密
   Base64DeAndRsa(buf,OutBuf);
