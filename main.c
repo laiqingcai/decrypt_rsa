@@ -51,7 +51,7 @@ int ReadRsaKey(void)
 	memset(rsa_qp, 0 ,BUFFER_SIZE);
     
     mbedtls_rsa_init(&rsa, MBEDTLS_RSA_PKCS_V15, 0);
-    if (( fpriv = fopen("./rsa_key.txt", "rb")) == NULL)  {
+    if (( fpriv = fopen("./rsa_priv.txt", "rb")) == NULL)  {
         DEBUG_INFO("fopen rsa file failed\n");
         ret = -1;
         goto exit;
@@ -439,8 +439,8 @@ void RsaNToPkcs1(char * PemData)
 //测试
 void TestRsa(void)
 {
-  //CreateRsaKey();
-  //RsaNToPkcs1(PubKey);
+  CreateRsaKey();
+  RsaNToPkcs1(PubKey);
 
   //采用rsa公钥加密base64编码之后的密文，明文是12345678
   unsigned char buf[1024] = "qpkO85wYitHwZ/HTm3+DKZmfVm1jZkjwowMIY3rOsXnj6WMSNSKyCRX6aEOUqDHDX7JlqjPctzHYsMBGQyZ5jvKuiLIjIGDQsZtFWg29iXwSz09jhAdixCmiP6JqfMho9zek5FUydqM9tyMQppv8h3ilM8kiFCXRZ2+76PmhSg0=";
